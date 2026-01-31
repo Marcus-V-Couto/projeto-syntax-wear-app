@@ -1,0 +1,30 @@
+import Banner from "@/assets/img/banner.jpg";
+import { Button } from "../Button";
+
+export const Hero = () => {
+  return (
+    <div className="container">
+      <section className="relative h-125 rounded-[20px] mb-10">
+        <img
+          src={Banner}
+          alt="Banner da loja SyntaxWear"
+          className="w-full h-full object-cover rounded-[20px]"
+        />
+        <div className="w-full bottom-0 flex justify-end items-center text-center px-6 md:px-24 pb-32 absolute">
+          <div className="text-white flex flex-col items-center w-[388px]">
+            <h2 className="text-x1 font-medium leading-normal tracking-wider mb-2.5">
+              Krypton One
+            </h2>
+            <h1 className="text-2x1 leading-9 tracking-widest mb-10">
+              Transforme qualquer passo em presença
+            </h1>
+            <div className="flex gap-3.5">
+              <Button variant="secondary" size="sm">Ver Modelos</Button>
+              <Button variant="primary">Comprar</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
