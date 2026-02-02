@@ -19,7 +19,9 @@ export const Hero = () => {
               Transforme qualquer passo em presença
             </h1>
             <div className="flex gap-3.5">
-              <Button variant="secondary" size="sm">Ver Modelos</Button>
+              <Button variant="secondary" size="sm">
+                Ver Modelos
+              </Button>
               <Button variant="primary">Comprar</Button>
             </div>
           </div>
