@@ -99,11 +99,19 @@ export const Gallery = () => {
             {item.id === "highlight" && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-white flex flex-col items-center w-[260px] md:w-[388px] mx-auto">
-                  <h2 className="text-x1 font-medium leading-normal tracking-wider mb-2.5">Krypton One</h2>
-                  <h1 className="text-2x1 leading-9 tracking-widest mb-6">Estilo urbano com atitude</h1>
+                  <h2 className="text-x1 font-medium leading-normal tracking-wider mb-2.5">
+                    Krypton One
+                  </h2>
+                  <h1 className="text-2x1 leading-9 tracking-widest mb-6">
+                    Estilo urbano com atitude
+                  </h1>
                   <div className="flex gap-3.5">
-                    <Button variant="secondary" size="sm">Feminino</Button>
-                    <Button variant="secondary" size="sm">Masculino</Button>
+                    <Button variant="secondary" size="sm">
+                      Feminino
+                    </Button>
+                    <Button variant="secondary" size="sm">
+                      Masculino
+                    </Button>
                   </div>
                 </div>
               </div>

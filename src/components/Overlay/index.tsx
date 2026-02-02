@@ -2,10 +2,15 @@ interface OverlayProps {
   children: React.ReactNode;
   title: string;
   subtitle: string;
-  className?: string
+  className?: string;
 }
 
-export const Overlay = ({ children, title, subtitle, className }: OverlayProps) => {
+export const Overlay = ({
+  children,
+  title,
+  subtitle,
+  className,
+}: OverlayProps) => {
   return (
     <div className={`absolute w-full text-center ${className}`}>
       <div className="text-white flex flex-col items-center w-[388px]">
