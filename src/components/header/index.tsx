@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import Logo from "@/assets/img/logo.png";
 import IconUser from "@/assets/img/icon-user.png";
 import IconAbout from "@/assets/img/icon-about.png";
@@ -7,7 +8,7 @@ export const Header = () => {
   return (
     <div className="relative">
       <header className="fixed top-10 left-0 right-0 z-10 mx-10">
-        <div className="bg-white max-w-[1320px] mx-auto flex justify-between items-center py-3 px-7 rounded-2xl mt-5">
+        <div className="bg-white text-black max-w-[1320px] mx-auto flex justify-between items-center py-3 px-7 rounded-2xl mt-5">
           <img src={Logo} alt="Logo SyntaxWear" className="w-32 md:w-36" />
 
           <nav className="hidden md:block">
@@ -32,9 +33,9 @@ export const Header = () => {
                 <a href="#">Sobre</a>
               </li>
               <li>
-                <a href="#">
+                <Link to="/sign-in">
                   <img src={IconUser} alt="Ícone de Usuário" />
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#">
