@@ -32,7 +32,7 @@ function RouteComponent() {
             </span>
           </button>
           <p className="text-sm text-gray-600 mt-6 text-center">
-            Já tem uma conta?{" "}
+            Já tem uma conta?
             <a href="/sign-in" className="text-[#5433EB] hover:underline">
               Entrar
             </a>
@@ -41,7 +41,7 @@ function RouteComponent() {
           <LoginForm />
 
           <p className="mt-3.55">
-            Não possui uma conta?{" "}
+            Não possui uma conta?
             <Link to="/sign-up" className="ml-1 text-[#5433EB] hover:underline">Cadastre-se</Link>
           </p>
         </div>
