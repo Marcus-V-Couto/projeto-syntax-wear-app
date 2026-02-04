@@ -12,6 +12,7 @@ import MensWoolCruiserWaterproof from "@/assets/img/wool-cruiser-waterproof-natu
 // import MensCruiserMidExplore from "@/assets/img/cruiser-mid-explore-rustic-green.webp";
 // import MensCruiser from "@/assets/img/cruiser_blizzard_blizzard.webp";
 import { formatCurrency } from "../../utils/format-currency";
+import { IoMdClose } from "react-icons/io";
 
 const productsInCart = [
   { id: 1, name: "Produto 1", image: MensTreeDasher, price: 35, quantity: 5 },
@@ -35,14 +36,11 @@ const productsInCart = [
 
 export const ShoppingCart = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
-
-  // const handleCart = () => {
-
-  // }
+  
   return (
     <>
       <button
-        className="cursor-pointer"
+        className="relative cursor-pointer"
         onClick={() => setCartIsOpen(!cartIsOpen)}
         type="button"
       >
@@ -72,7 +70,7 @@ export const ShoppingCart = () => {
               onClick={() => setCartIsOpen(!cartIsOpen)}
               type="button"
             >
-              X
+              <IoMdClose onClick={() => setCartIsOpen(!cartIsOpen)} className="cursor-pointer" />
             </button>
           </header>
           <ul className="p-4 h-[calc(100%_-_140px)] overflow-y-auto scrollbar-hide flex flex-col gap-3">
@@ -82,7 +80,7 @@ export const ShoppingCart = () => {
                   type="button"
                   className="self-end text-xs cursor-pointer text-red-500"
                 >
-                  X
+                  <IoMdClose onClick={() => setCartIsOpen(!cartIsOpen)} className="cursor-pointer" />
                 </button>
                 <div className="flex items-center gap-4 p-5 border-b border-gray-200">
                   <img
