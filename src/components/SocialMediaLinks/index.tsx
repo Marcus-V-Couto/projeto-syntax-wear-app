@@ -84,9 +84,9 @@ const socialMedias = [
 
 export const SocialMediaLinks = () => {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <p className="mb-4 text-x1 font-medium text-surface-alt">Redes Sociais</p>
-      <ul className="flex gap-5">
+      <ul className="flex gap-2.5">
         {socialMedias.map((socialMedia) => (
           <li key={socialMedia.id}>
             <a

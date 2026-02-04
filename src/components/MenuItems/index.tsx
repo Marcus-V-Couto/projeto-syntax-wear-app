@@ -28,11 +28,11 @@ const menus = [
 
 export const MenuItems = () => {
   return (
-    <div>
-      <div className="flex flex-col sm:flex-row gap-8">
+    <div className="flex justify-center">
+      <div className="flex flex-col sm:flex-row gap-8 items-center lg:items-start lg:justify-start">
         {menus.map((menu) => (
           <nav key={menu.id}>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-4 items-center">
               <li>
                 <p className="font-normal text-surface-alt text-xl">
                   {menu.title}
