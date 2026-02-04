@@ -1,49 +1,101 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { z } from "zod";
-import { registerUserFormSchema } from "./register-form.schema";
+import {
+  registerUserFormBaseSchema,
+  registerUserFormSchema,
+} from "./register-form.schema";
 
 type RegisterFormValues = z.infer<typeof registerUserFormSchema>;
 
-const initialValues: RegisterFormValues = {
+const initialValues: Omit<RegisterFormValues, 'birthDate'> & { birthDate: string } = {
   firstName: "",
   lastName: "",
   email: "",
   password: "",
   confirmPassword: "",
   cpf: "",
-  birthDate: new Date(),
+  birthDate: "",
   cellphone: "",
 };
 
 export const RegisterForm = () => {
-  const [values, setValues] = useState<RegisterFormValues>(initialValues);
+  const [values, setValues] = useState<Omit<RegisterFormValues, 'birthDate'> & { birthDate: string | Date }>(initialValues);
   const [errors, setErrors] = useState<
     Partial<Record<keyof RegisterFormValues, string>>
   >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const fieldSchemas = useMemo(
+    () => ({
+      firstName: registerUserFormBaseSchema.pick({ firstName: true }),
+      lastName: registerUserFormBaseSchema.pick({ lastName: true }),
+      email: registerUserFormBaseSchema.pick({ email: true }),
+      password: registerUserFormBaseSchema.pick({ password: true }),
+      confirmPassword: registerUserFormBaseSchema.pick({ confirmPassword: true }),
+      cpf: registerUserFormBaseSchema.pick({ cpf: true }),
+      birthDate: registerUserFormBaseSchema.pick({ birthDate: true }),
+      cellphone: registerUserFormBaseSchema.pick({ cellphone: true }),
+    }),
+    []
+  );
+
   const formatDateToInput = (date: Date | string) => {
     if (!date) return "";
     const d = date instanceof Date ? date : new Date(date);
+    if (isNaN(d.getTime())) return "";
     return d.toISOString().slice(0, 10);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+
+    // Limpa o erro do campo atual quando o usuário começa a digitar
+    if (errors[name as keyof RegisterFormValues]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+
     if (name === "birthDate") {
       setValues((prev) => ({
         ...prev,
-        [name]: value ? new Date(value) : new Date(),
+        [name]: value || "",
       }));
       return;
     }
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const { name } = event.target;
+    const fieldName = name as keyof RegisterFormValues;
+    let fieldValue = values[fieldName];
+    
+    // Converte string de data para Date se necessário
+    if (fieldName === "birthDate" && typeof fieldValue === "string" && fieldValue) {
+      fieldValue = new Date(fieldValue);
+    }
+    
+    const fieldSchema = fieldSchemas[fieldName];
+    const result = fieldSchema.safeParse({ [fieldName]: fieldValue });
+    
+    if (!result.success) {
+      const fieldErrors = result.error.flatten().fieldErrors;
+      setErrors(prev => ({ ...prev, [fieldName]: fieldErrors[fieldName as keyof typeof fieldErrors]?.[0] }));
+    }
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
-    const result = registerUserFormSchema.safeParse(values);
+    
+    // Converte birthDate para Date se for string
+    const submitValues = {
+      ...values,
+      birthDate: typeof values.birthDate === "string" && values.birthDate 
+        ? new Date(values.birthDate) 
+        : values.birthDate
+    };
+    
+    const result = registerUserFormSchema.safeParse(submitValues);
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
       setErrors({
@@ -65,10 +117,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form
-      className="text-black flex flex-col gap-3.5"
-      onSubmit={handleSubmit}
-    >
+    <form className="text-black flex flex-col gap-3.5" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-600">
           Nome<span className="text-red-500">*</span>
@@ -80,6 +129,7 @@ export const RegisterForm = () => {
           placeholder="Nome"
           value={values.firstName}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
         {errors.firstName && (
           <p className="text-xs text-red-600">{errors.firstName}</p>
@@ -97,6 +147,7 @@ export const RegisterForm = () => {
           placeholder="Sobrenome"
           value={values.lastName}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
         {errors.lastName && (
           <p className="text-xs text-red-600">{errors.lastName}</p>
@@ -114,6 +165,7 @@ export const RegisterForm = () => {
           placeholder="E-mail"
           value={values.email}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
         {errors.email && <p className="text-xs text-red-600">{errors.email}</p>}
       </div>
@@ -129,8 +181,9 @@ export const RegisterForm = () => {
           placeholder="CPF"
           value={values.cpf}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
-        {errors.cpf && <p className="text-xs text-red-700">{errors.cpf}</p>}
+        {errors.cpf && <p className="text-xs text-red-600">{errors.cpf}</p>}
       </div>
 
       <div className="flex flex-col gap-1">
@@ -142,11 +195,12 @@ export const RegisterForm = () => {
           type="date"
           name="birthDate"
           placeholder="Data de nascimento"
-          value={formatDateToInput(values.birthDate)}
+          value={typeof values.birthDate === "string" ? values.birthDate : formatDateToInput(values.birthDate)}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
         {errors.birthDate && (
-          <p className="text-xs text-red-700">{errors.birthDate}</p>
+          <p className="text-xs text-red-600">{errors.birthDate}</p>
         )}
       </div>
 
@@ -161,9 +215,10 @@ export const RegisterForm = () => {
           placeholder="Senha"
           value={values.password}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
         {errors.password && (
-          <p className="text-xs text-red-700">{errors.password}</p>
+          <p className="text-xs text-red-600">{errors.password}</p>
         )}
       </div>
 
@@ -178,9 +233,10 @@ export const RegisterForm = () => {
           placeholder="Confirmar senha"
           value={values.confirmPassword}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
         {errors.confirmPassword && (
-          <p className="text-xs text-red-700">{errors.confirmPassword}</p>
+          <p className="text-xs text-red-600">{errors.confirmPassword}</p>
         )}
       </div>
 
@@ -195,14 +251,15 @@ export const RegisterForm = () => {
           placeholder="Telefone Celular"
           value={values.cellphone}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
         {errors.cellphone && (
-          <p className="text-xs text-red-700">{errors.cellphone}</p>
+          <p className="text-xs text-red-600">{errors.cellphone}</p>
         )}
       </div>
 
       <button
-        className="bg-[#5433EB] w-full rounded-[1px] cursor-pointer text-white font-semibold uppercase rounded-md py-3 transition-all hover-bg-[#4028C7] disabled:opacity-50 mt-2 disabled:cursor-not-allowed"
+        className="bg-[#5433EB] w-full rounded-[1px] cursor-pointer text-white font-semibold uppercase rounded-md py-3 transition-all hover:bg-[#4028C7] disabled:opacity-50 mt-2 disabled:cursor-not-allowed"
         type="submit"
         disabled={isSubmitting}
       >

@@ -3,6 +3,7 @@ import { products } from "../../../mocks/products";
 import { formatCurrency } from "../../../utils/format-currency";
 import { CartContext } from "../../../contexts/CartContext";
 import { useContext } from "react";
+import { CEPForm } from "../../../components/CEPForm";
 
 export const Route = createFileRoute("/_app/products/$productId")({
   component: RouteComponent,
@@ -73,19 +74,7 @@ function RouteComponent() {
             </p> */}
             <div className="mb-6">
               <p>Calcular o prazo de entrega</p>
-              <form action="" className="flex gap-3">
-                <input
-                  type="text"
-                  placeholder="Insira seu CEP"
-                  className="border border-[#C0C0C0] rounded-md p-3"
-                />
-                <button
-                  type="button"
-                  className="bg-black text-white py-3 px-6 rounded-md cursor-pointer hover-bg-gray-800"
-                >
-                  Calcular Frete
-                </button>
-              </form>
+              <CEPForm />
             </div>
             <button
               type="button"

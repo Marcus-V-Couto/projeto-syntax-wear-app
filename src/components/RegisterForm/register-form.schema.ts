@@ -4,32 +4,35 @@ import { z } from "zod";
 import { isValidCPF } from "../../utils/cpf-validator";
 
 
-export const registerUserFormSchema = z
-  .object({
-    firstName: z.string().nonempty("Primeiro NomeObrigatório"),
-    lastName: z.string().nonempty("Segundo Nome Obrigatório"),
+export const registerUserFormBaseSchema = z.object({
+  firstName: z.string().nonempty("Primeiro Nome Obrigatório"),
+  lastName: z.string().nonempty("Segundo Nome Obrigatório"),
 
-    email: z.email("Email inválido").nonempty("Email Obrigatório"),
-    password: z
-      .string()
-      .nonempty("Senha Obrigatória")
-      .min(8, "Mínimo de 8 caracteres"),
-    confirmPassword: z
-      .string()
-      .nonempty("Confirmação de Senha Obrigatória")
-      .min(8, "Mínimo de 8 caracteres"),
-    cpf: z
-      .string()
-      .nonempty("CPF Obrigatório")
-      .refine(isValidCPF, "CPF inválido"),
+  email: z.string().email("Email inválido"),
+  password: z
+    .string()
+    .nonempty("Senha Obrigatória")
+    .min(8, "Mínimo de 8 caracteres"),
+  confirmPassword: z
+    .string()
+    .nonempty("Confirmação de Senha Obrigatória")
+    .min(8, "Mínimo de 8 caracteres"),
+  cpf: z
+    .string()
+    .nonempty("CPF Obrigatório")
+    .refine(isValidCPF, "CPF inválido"),
 
-    birthDate: z.date(),
-    cellphone: z.string().nonempty("Telefone Celular Obrigatório"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
+  birthDate: z.date(),
+  cellphone: z.string().nonempty("Telefone Celular Obrigatório"),
+});
+
+export const registerUserFormSchema = registerUserFormBaseSchema.refine(
+  (data) => data.password === data.confirmPassword,
+  {
     path: ["confirmPassword"],
     message: "As senhas não coincidem",
-  });
+  }
+);
 
 type RegisterUserFormSchema = z.infer<typeof registerUserFormSchema>;
 
