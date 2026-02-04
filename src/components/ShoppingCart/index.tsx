@@ -1,42 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import IconCart from "@/assets/img/icon-cart.png";
 
-import MensTreeDasher from "@/assets/img/tree-dasher-2-natural-black-boyal-blue.webp";
-import MensTreeRunnerNz from "@/assets/img/tree-runner-nz-weathered-brown.webp";
-import MensWoolCruiser from "@/assets/img/wool-cruiser-burgundy.webp";
-import MensWoolCruiserSlipOn from "@/assets/img/wool-cruiser-slip-on-dark-grey.webp";
-import MensWoolCruiserWaterproof from "@/assets/img/wool-cruiser-waterproof-natural-black.webp";
-// import MensWoolRunnerNzWaterproof from "@/assets/img/wool-runner-nz-waterproof-medium-grey.webp";
-// import MensWoolRunnerNzMidWaterproof from "@/assets/img/wool-runner-nz-mid-waterproof-natural-black.webp";
-// import MensStriderExplore from "@/assets/img/strider-explore-rustic-green.webp";
-// import MensCruiserMidExplore from "@/assets/img/cruiser-mid-explore-rustic-green.webp";
-// import MensCruiser from "@/assets/img/cruiser_blizzard_blizzard.webp";
 import { formatCurrency } from "../../utils/format-currency";
 import { IoMdClose } from "react-icons/io";
 
-const productsInCart = [
-  { id: 1, name: "Produto 1", image: MensTreeDasher, price: 35, quantity: 5 },
-  { id: 2, name: "Produto 2", image: MensTreeRunnerNz, price: 75, quantity: 2 },
-  { id: 3, name: "Produto 3", image: MensWoolCruiser, price: 85, quantity: 4 },
-  {
-    id: 4,
-    name: "Produto 4",
-    image: MensWoolCruiserSlipOn,
-    price: 135,
-    quantity: 6,
-  },
-  {
-    id: 5,
-    name: "Produto 5",
-    image: MensWoolCruiserWaterproof,
-    price: 15,
-    quantity: 2,
-  },
-];
-
 export const ShoppingCart = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
-  
+  const { cart, removeFromCart, incrementInCart, decrementInCart } =
+    useContext(CartContext);
+
+  console.log("items no carrinho:", cart);
+
   return (
     <>
       <button
@@ -44,7 +19,12 @@ export const ShoppingCart = () => {
         onClick={() => setCartIsOpen(!cartIsOpen)}
         type="button"
       >
-        <img src={IconCart} alt="Ícone de Carrinho" />
+        <img src={IconCart} alt="Ícone de Carrinho de Compras" />
+        {cart.length > 0 && (
+          <span className="absolute -top-3 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+            {cart.length}
+          </span>
+        )}
       </button>
 
       <div
@@ -60,9 +40,7 @@ export const ShoppingCart = () => {
               <h3 className="font-bold text-xl">Seu Carrinho</h3>
               <div className="flex justify-center items-center gap-2">
                 <img src={IconCart} alt="Ícone de Carrinho" />
-                <span className="text-xl font-bold">
-                  {productsInCart.length}
-                </span>
+                <span className="text-xl font-bold">{cart.length}</span>
               </div>
             </div>
             <button
@@ -70,17 +48,18 @@ export const ShoppingCart = () => {
               onClick={() => setCartIsOpen(!cartIsOpen)}
               type="button"
             >
-              <IoMdClose onClick={() => setCartIsOpen(!cartIsOpen)} className="cursor-pointer" />
+              <IoMdClose className="cursor-pointer" />
             </button>
           </header>
           <ul className="p-4 h-[calc(100%_-_140px)] overflow-y-auto scrollbar-hide flex flex-col gap-3">
-            {productsInCart.map((product) => (
+            {cart.map((product) => (
               <li key={product.id} className="flex flex-col gap-1 px-6">
                 <button
                   type="button"
                   className="self-end text-xs cursor-pointer text-red-500"
+                  onClick={() => removeFromCart(product.id)}
                 >
-                  <IoMdClose onClick={() => setCartIsOpen(!cartIsOpen)} className="cursor-pointer" />
+                  <IoMdClose className="cursor-pointer" />
                 </button>
                 <div className="flex items-center gap-4 p-5 border-b border-gray-200">
                   <img
@@ -98,11 +77,20 @@ export const ShoppingCart = () => {
                     </p>
                     <p className="mb-1">Qtde: {product.quantity}</p>
                     <div className="border flex gap-6 py-1 px-3">
-                      <button type="button" className="mr-2">
+                      <button
+                        type="button"
+                        className="mr-2"
+                        onClick={() => decrementInCart(product)}
+                      >
                         -
                       </button>
                       <span>{product.quantity}</span>
-                      <button type="button">+</button>
+                      <button
+                        type="button"
+                        onClick={() => incrementInCart(product)}
+                      >
+                        +
+                      </button>
                     </div>
                   </div>
                 </div>
