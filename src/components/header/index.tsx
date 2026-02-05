@@ -13,15 +13,15 @@ export interface NavLink {
 const navLinks: NavLink[] = [
   {
     name: "Masculino",
-    href: "/products",
+    href: "/products/category/masculino",
   },
   {
     name: "Feminino",
-    href: "/products",
+    href: "/products/category/feminino",
   },
   {
     name: "Outlet",
-    href: "/products",
+    href: "/products/category/outlet",
   },
 ];
 
@@ -29,7 +29,7 @@ export const Header = () => {
   return (
     <div className="relative">
       <header className="fixed top-5 left-0 right-0 z-10 mx-10">
-        <div className="bg-white text-black max-w-[1320px] mx-auto flex justify-between items-center py-3 px-7 rounded-2xl mt-5">
+        <div className="bg-white text-black max-w-330 mx-auto flex justify-between items-center py-3 px-7 rounded-2xl mt-5">
           <Link to="/">
             <img src={Logo} alt="Logo SyntaxWear" className="w-32 md:w-36" />
           </Link>
@@ -42,7 +42,7 @@ export const Header = () => {
               ))}
             </ul>
           </nav>
-          <nav>
+          <nav className="flex items-center">
             <ul className="flex gap-4 md:gap-10 items-center">
               <li className="hidden lg:block">
                 <Link to="/our-stores">Nossas Lojas</Link>
@@ -50,20 +50,28 @@ export const Header = () => {
               <li className="hidden lg:block">
                 <Link to="/about">Sobre</Link>
               </li>
-              <li className="lg:hidden">
+              <li className="lg:hidden flex items-center">
                 <MenuMobile navLinks={navLinks} />
               </li>
-              <li className="hidden lg:block">
-                <Link to="/sign-in">
-                  <img src={IconUser} alt="Ícone de Usuário" />
+              <li className="hidden lg:flex items-center">
+                <Link to="/sign-in" className="flex items-center">
+                  <img
+                    src={IconUser}
+                    alt="Ícone de Usuário"
+                    className="w-6 h-6"
+                  />
                 </Link>
               </li>
-              <li className="hidden lg:block">
-                <Link to="/about">
-                  <img src={IconAbout} alt="Ícone de Sobre" />
+              <li className="hidden lg:flex items-center">
+                <Link to="/about" className="flex items-center">
+                  <img
+                    src={IconAbout}
+                    alt="Ícone de Sobre"
+                    className="w-6 h-6"
+                  />
                 </Link>
               </li>
-              <li>
+              <li className="flex items-center">
                 <ShoppingCart />
               </li>
             </ul>

@@ -1,9 +1,10 @@
 import Banner from "@/assets/img/banner.jpg";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import { Button } from "../Button";
 import { Overlay } from "../Overlay";
 
 export const Hero = () => {
+  const router = useRouter();
   return (
     <div className="container">
       <section className="relative h-125 rounded-[20px] mb-10">
@@ -18,7 +19,10 @@ export const Hero = () => {
           subtitle="Transforme qualquer passo em presença"
           className="bottom-0 px-6 md:px-24 pb-24 flex justify-end md:items-end"
         >
-          <Button variant="secondary">
+          <Button
+            variant="secondary"
+            onClick={() => router.navigate({ to: "/products" })}
+          >
             <Link to="/products">Ver Modelos</Link>
           </Button>
           <Button>Comprar</Button>

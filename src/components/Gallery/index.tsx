@@ -27,6 +27,7 @@ import galeriaTenisAmarelo from "../../assets/img/galeria-tenis-branco-e-preto.j
 import galeriaTenisCinza from "../../assets/img/galeria-tenis-cinza.jpg";
 
 import { Button } from "../Button";
+import { useRouter } from "@tanstack/react-router";
 
 // Interface para tipagem dos itens da galeria
 interface GalleryItem {
@@ -43,6 +44,7 @@ interface GalleryItem {
 }
 
 export const Gallery = () => {
+  const router = useRouter();
   // Array com os dados dos itens da galeria
   // A ordem aqui representa a estrutura para desktop
   const galleryItems: GalleryItem[] = [
@@ -106,10 +108,28 @@ export const Gallery = () => {
                     Estilo urbano com atitude
                   </h1>
                   <div className="flex gap-3.5">
-                    <Button variant="secondary" size="sm">
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={() =>
+                        router.navigate({
+                          to: "/products/category/$category",
+                          params: { category: "Feminino" },
+                        })
+                      }
+                    >
                       Feminino
                     </Button>
-                    <Button variant="secondary" size="sm">
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={() =>
+                        router.navigate({
+                          to: "/products/category/$category",
+                          params: { category: "Masculino" },
+                        })
+                      }
+                    >
                       Masculino
                     </Button>
                   </div>
