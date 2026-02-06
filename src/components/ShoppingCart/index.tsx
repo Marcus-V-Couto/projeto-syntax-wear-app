@@ -44,7 +44,7 @@ export const ShoppingCart = () => {
               </div>
             </div>
             <button
-              className="text-xl self-end cursor-pointer text-error font-bold cursor-pointer"
+              className="text-xl self-end text-error font-bold cursor-pointer"
               onClick={() => setCartIsOpen(!cartIsOpen)}
               type="button"
             >

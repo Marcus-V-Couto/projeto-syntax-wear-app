@@ -259,7 +259,7 @@ export const RegisterForm = () => {
       </div>
 
       <button
-        className="bg-accent w-full rounded-[1px] cursor-pointer text-white font-semibold uppercase rounded-md py-3 transition-all hover:bg-accent-hover disabled:opacity-50 mt-2 disabled:cursor-not-allowed"
+        className="bg-accent w-full cursor-pointer text-white font-semibold uppercase rounded-md py-3 transition-all hover:bg-accent-hover disabled:opacity-50 mt-2 disabled:cursor-not-allowed"
         type="submit"
         disabled={isSubmitting}
       >
