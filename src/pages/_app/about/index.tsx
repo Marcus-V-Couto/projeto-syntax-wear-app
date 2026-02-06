@@ -4,6 +4,10 @@ import bannerAbout from "@/assets/img/about.jpg";
 
 export const Route = createFileRoute("/_app/about/")({
   component: RouteComponent,
+  head: () => ({
+    title: "Sobre - SyntaxWear",
+    meta: [{ property: "og:title", content: "Sobre - SyntaxWear" }],
+  }),
 });
 
 function RouteComponent() {
@@ -13,8 +17,8 @@ function RouteComponent() {
         <img src={bannerAbout} alt="Homem sentado com tênis da marca"  className="size-full object-cover"/>
       </div>
       <div className="text-black px-8 py-16 lg:px-20 md:w-1/2 h-full flex flex-col justify-center">
-        <h2 className="text-5xl lg:text-6xl font-medium text-[#333333] mb-8">Sobre nós</h2>
-        <p className="text-[#666666] text-lg leading-relaxed mb-5">
+        <h2 className="text-5xl lg:text-6xl font-medium text-text mb-8">Sobre nós</h2>
+        <p className="text-text-secondary text-lg leading-relaxed mb-5">
           Somos apaixonados por calçados que unem estilo, conforto e
           durabilidade. Nossa missão? Fazer você se sentir bem a cada passo,
           oferecendo uma experiência de compra incrível e uma seleção de tênis,

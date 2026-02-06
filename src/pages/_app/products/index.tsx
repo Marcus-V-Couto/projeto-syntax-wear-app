@@ -4,6 +4,10 @@ import { products } from "../../../mocks/products";
 
 export const Route = createFileRoute("/_app/products/")({
   component: RouteComponent,
+  head: () => ({
+    title: "Produtos - SyntaxWear",
+    meta: [{ property: "og:title", content: "Produtos - SyntaxWear" }],
+  }),
 });
 
 function RouteComponent() {

@@ -54,7 +54,7 @@ export const Header = () => {
                 <MenuMobile navLinks={navLinks} />
               </li>
               <li className="hidden lg:flex items-center">
-                <Link to="/sign-in" className="flex items-center">
+                <Link to="/sign-up" className="flex items-center">
                   <img
                     src={IconUser}
                     alt="Ícone de Usuário"

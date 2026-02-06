@@ -120,10 +120,10 @@ export const RegisterForm = () => {
     <form className="text-black flex flex-col gap-3.5" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-600">
-          Nome<span className="text-red-500">*</span>
+          Nome<span className="text-error">*</span>
         </label>
         <input
-          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.firstName ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-[#5433EB]"}`}
+          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.firstName ? "border-error focus:ring-error" : "border-border focus:ring-accent"}`}
           type="text"
           name="firstName"
           placeholder="Nome"
@@ -132,16 +132,16 @@ export const RegisterForm = () => {
           onBlur={handleBlur}
         />
         {errors.firstName && (
-          <p className="text-xs text-red-600">{errors.firstName}</p>
+          <p className="text-xs text-error">{errors.firstName}</p>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-600">
-          Sobrenome<span className="text-red-500">*</span>
+          Sobrenome<span className="text-error">*</span>
         </label>
         <input
-          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.lastName ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-[#5433EB]"}`}
+          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.lastName ? "border-error focus:ring-error" : "border-border focus:ring-accent"}`}
           type="text"
           name="lastName"
           placeholder="Sobrenome"
@@ -150,16 +150,16 @@ export const RegisterForm = () => {
           onBlur={handleBlur}
         />
         {errors.lastName && (
-          <p className="text-xs text-red-600">{errors.lastName}</p>
+          <p className="text-xs text-error">{errors.lastName}</p>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-600">
-          E-mail<span className="text-red-500">*</span>
+          E-mail<span className="text-error">*</span>
         </label>
         <input
-          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.email ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-[#5433EB]"}`}
+          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.email ? "border-error focus:ring-error" : "border-border focus:ring-accent"}`}
           type="email"
           name="email"
           placeholder="E-mail"
@@ -167,15 +167,15 @@ export const RegisterForm = () => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        {errors.email && <p className="text-xs text-red-600">{errors.email}</p>}
+        {errors.email && <p className="text-xs text-error">{errors.email}</p>}
       </div>
 
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-600">
-          CPF<span className="text-red-500">*</span>
+          CPF<span className="text-error">*</span>
         </label>
         <input
-          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.cpf ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-[#5433EB]"}`}
+          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.cpf ? "border-error focus:ring-error" : "border-border focus:ring-accent"}`}
           type="text"
           name="cpf"
           placeholder="CPF"
@@ -183,15 +183,15 @@ export const RegisterForm = () => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        {errors.cpf && <p className="text-xs text-red-600">{errors.cpf}</p>}
+        {errors.cpf && <p className="text-xs text-error">{errors.cpf}</p>}
       </div>
 
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-600">
-          Data de nascimento<span className="text-red-500">*</span>
+          Data de nascimento<span className="text-error">*</span>
         </label>
         <input
-          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.birthDate ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-[#5433EB]"}`}
+          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.birthDate ? "border-error focus:ring-error" : "border-border focus:ring-accent"}`}
           type="date"
           name="birthDate"
           placeholder="Data de nascimento"
@@ -200,16 +200,16 @@ export const RegisterForm = () => {
           onBlur={handleBlur}
         />
         {errors.birthDate && (
-          <p className="text-xs text-red-600">{errors.birthDate}</p>
+          <p className="text-xs text-error">{errors.birthDate}</p>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-600">
-          Senha<span className="text-red-500">*</span>
+          Senha<span className="text-error">*</span>
         </label>
         <input
-          className={`border rounded-[1px] border-gray-200 w-full text-black p-3 ${errors.password ? "border-red-500" : "border-gray-200"}`}
+          className={`border rounded-[1px] border-gray-200 w-full text-black p-3 ${errors.password ? "border-error" : "border-gray-200"}`}
           type="password"
           name="password"
           placeholder="Senha"
@@ -218,16 +218,16 @@ export const RegisterForm = () => {
           onBlur={handleBlur}
         />
         {errors.password && (
-          <p className="text-xs text-red-600">{errors.password}</p>
+          <p className="text-xs text-error">{errors.password}</p>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-600">
-          Confirmar Senha<span className="text-red-500">*</span>
+          Confirmar Senha<span className="text-error">*</span>
         </label>
         <input
-          className={`border rounded-[1px] border-gray-200 w-full text-black p-3 ${errors.confirmPassword ? "border-red-500" : "border-gray-200"}`}
+          className={`border rounded-[1px] border-gray-200 w-full text-black p-3 ${errors.confirmPassword ? "border-error" : "border-gray-200"}`}
           type="password"
           name="confirmPassword"
           placeholder="Confirmar senha"
@@ -236,16 +236,16 @@ export const RegisterForm = () => {
           onBlur={handleBlur}
         />
         {errors.confirmPassword && (
-          <p className="text-xs text-red-600">{errors.confirmPassword}</p>
+          <p className="text-xs text-error">{errors.confirmPassword}</p>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-600">
-          Telefone Celular<span className="text-red-500">*</span>
+          Telefone Celular<span className="text-error">*</span>
         </label>
         <input
-          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.cellphone ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-[#5433EB]"}`}
+          className={`border rounded-xs border-gray-200 w-full text-black px-1 mt-1 focus:outline-none ${errors.cellphone ? "border-error focus:ring-error" : "border-border focus:ring-accent"}`}
           type="tel"
           name="cellphone"
           placeholder="Telefone Celular"
@@ -254,12 +254,12 @@ export const RegisterForm = () => {
           onBlur={handleBlur}
         />
         {errors.cellphone && (
-          <p className="text-xs text-red-600">{errors.cellphone}</p>
+          <p className="text-xs text-error">{errors.cellphone}</p>
         )}
       </div>
 
       <button
-        className="bg-[#5433EB] w-full rounded-[1px] cursor-pointer text-white font-semibold uppercase rounded-md py-3 transition-all hover:bg-[#4028C7] disabled:opacity-50 mt-2 disabled:cursor-not-allowed"
+        className="bg-accent w-full rounded-[1px] cursor-pointer text-white font-semibold uppercase rounded-md py-3 transition-all hover:bg-accent-hover disabled:opacity-50 mt-2 disabled:cursor-not-allowed"
         type="submit"
         disabled={isSubmitting}
       >
