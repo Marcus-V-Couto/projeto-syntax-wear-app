@@ -16,7 +16,7 @@ export const Route = createFileRoute("/_app/products/$productId")({
       ? `${filteredProduct.name} - Produtos - SyntaxWear`
       : "Produto não encontrado - Produtos - SyntaxWear";
 
-    return { meta: [{ title }] };
+    return { meta: [{ title}] };
   },
 
 });

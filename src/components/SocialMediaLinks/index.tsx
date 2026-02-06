@@ -11,7 +11,7 @@ const socialMedias = [
   {
     id: 1,
     name: "Instagram",
-    href: "#",
+    href: "#instagram",
     icon: iconInstagram,
     target: "_blank",
     rel: "noopener noreferrer",
@@ -20,7 +20,7 @@ const socialMedias = [
   {
     id: 2,
     name: "WhatsApp",
-    href: "#",
+    href: "#whatsapp",
     icon: iconWhatsapp,
     target: "_blank",
     rel: "noopener noreferrer",
@@ -29,7 +29,7 @@ const socialMedias = [
   {
     id: 3,
     name: "TikTok",
-    href: "#",
+    href: "#tiktok",
     icon: iconTikTok,
     target: "_blank",
     rel: "noopener noreferrer",
@@ -38,7 +38,7 @@ const socialMedias = [
   {
     id: 4,
     name: "Facebook",
-    href: "#",
+    href: "#facebook",
     icon: iconFacebook,
     target: "_blank",
     rel: "noopener noreferrer",
@@ -47,7 +47,7 @@ const socialMedias = [
   {
     id: 5,
     name: "X",
-    href: "#",
+    href: "#x",
     icon: iconX,
     target: "_blank",
     rel: "noopener noreferrer",
@@ -56,7 +56,7 @@ const socialMedias = [
   {
     id: 6,
     name: "Youtube",
-    href: "#",
+    href: "#youtube",
     icon: iconYoutube,
     target: "_blank",
     rel: "noopener noreferrer",
@@ -65,7 +65,7 @@ const socialMedias = [
   {
     id: 7,
     name: "Linkedin",
-    href: "#",
+    href: "#linkedin",
     icon: iconLinkedin,
     target: "_blank",
     rel: "noopener noreferrer",
@@ -74,7 +74,7 @@ const socialMedias = [
   {
     id: 8,
     name: "Pinterest",
-    href: "#",
+    href: "#pinterest",
     icon: iconPinterest,
     target: "_blank",
     rel: "noopener noreferrer",

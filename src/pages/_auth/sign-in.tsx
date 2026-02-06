@@ -7,8 +7,7 @@ import { Separator } from "../../components/Separator";
 export const Route = createFileRoute("/_auth/sign-in")({
   component: RouteComponent,
   head: () => ({
-    title: "Login - SyntaxWear",
-    meta: [{ property: "og:title", content: "Login  - SyntaxWear" }],
+    meta: [{ title: "Login - SyntaxWear"}],
   }),
 });
 

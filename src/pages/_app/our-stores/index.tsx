@@ -6,8 +6,7 @@ import OurStoresImg2 from "@/assets/img/loja-2.png";
 export const Route = createFileRoute("/_app/our-stores/")({
   component: RouteComponent,
   head: () => ({
-    title: "Nossas Lojas - SyntaxWear",
-    meta: [{ property: "og:title", content: "Nossas Lojas - SyntaxWear" }],
+    meta: [{ title: "Nossas Lojas - SyntaxWear"}],
   }),
 });
 

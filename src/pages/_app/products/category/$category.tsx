@@ -6,7 +6,7 @@ export const Route = createFileRoute('/_app/products/category/$category')({
   component: RouteComponent,
   head: () => ({
     title: "Produtos - SyntaxWear",
-    meta: [{ property: "og:title", content: "Produtos - SyntaxWear" }],
+    meta: [{ title: "Produtos - SyntaxWear"}],
   }),
 })
 

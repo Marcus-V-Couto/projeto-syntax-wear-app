@@ -7,8 +7,7 @@ import GoogleIcon from "../../assets/img/google-icon.png";
 export const Route = createFileRoute("/_auth/sign-up")({
   component: RouteComponent,
   head: () => ({
-    title: "Cadastre-se - SyntaxWear",
-    meta: [{ property: "og:title", content: "Cadastre-se  - SyntaxWear" }],
+    meta: [{ title: "Cadastre-se - SyntaxWear"}],
   }),
 });
 
