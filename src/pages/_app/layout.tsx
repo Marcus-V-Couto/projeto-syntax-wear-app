@@ -1,5 +1,5 @@
 import { Outlet, createFileRoute } from "@tanstack/react-router";
-import { Header } from "../../components/Header/index";
+import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
 
