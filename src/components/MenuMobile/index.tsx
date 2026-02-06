@@ -36,7 +36,10 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
                 <FaRegUserCircle className="h-6 w-6" />
                 <p>Olá! Acesse sua conta aqui</p>
               </Link>
-              <IoMdClose onClick={() => setMenuIsOpen(!menuIsOpen)} className="cursor-pointer" />
+              <IoMdClose
+                onClick={() => setMenuIsOpen(!menuIsOpen)}
+                className="cursor-pointer"
+              />
             </nav>
           </header>
           <ul className="p-4 h-[calc(100%_-_140px)] overflow-y-auto scrollbar-hide flex flex-col gap-3">
@@ -49,10 +52,14 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
             ))}
 
             <li>
-              <Link to="/our-stores" onClick={() => setMenuIsOpen(!menuIsOpen)}>Nossas Lojas</Link>
+              <Link to="/our-stores" onClick={() => setMenuIsOpen(!menuIsOpen)}>
+                Nossas Lojas
+              </Link>
             </li>
             <li>
-              <Link to="/about" onClick={() => setMenuIsOpen(!menuIsOpen)}>Sobre</Link>
+              <Link to="/about" onClick={() => setMenuIsOpen(!menuIsOpen)}>
+                Sobre
+              </Link>
             </li>
           </ul>
         </div>
