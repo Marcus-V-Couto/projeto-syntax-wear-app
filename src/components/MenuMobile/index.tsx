@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import IconMenu from "@/assets/img/icon-menu.png";
 import { FaRegUserCircle } from "react-icons/fa";
-import type { NavLink } from "../Header";
+import type { NavLink } from "../Headera";
 import { IoMdClose } from "react-icons/io";
 
 interface MenuMobileProps {
