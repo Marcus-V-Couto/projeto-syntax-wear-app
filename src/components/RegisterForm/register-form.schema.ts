@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { isValidCPF } from "../../utils/cpf-validator";
 
-
 export const registerUserFormBaseSchema = z.object({
   firstName: z.string().nonempty("Primeiro Nome Obrigatório"),
   lastName: z.string().nonempty("Segundo Nome Obrigatório"),
@@ -31,7 +30,7 @@ export const registerUserFormSchema = registerUserFormBaseSchema.refine(
   {
     path: ["confirmPassword"],
     message: "As senhas não coincidem",
-  }
+  },
 );
 
 type RegisterUserFormSchema = z.infer<typeof registerUserFormSchema>;
@@ -66,4 +65,4 @@ export const useRegisterForm = () => {
     setError,
     reset,
   };
-}
+};

@@ -15,7 +15,9 @@ const localStorageKey = "@SyntaxWear:cart";
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cart, setCart] = useState<ProductCart[]>(() => {
     const cartFromLocalStorage = localStorage.getItem(localStorageKey);
-    return cartFromLocalStorage !== null ? JSON.parse(cartFromLocalStorage) : []
+    return cartFromLocalStorage !== null
+      ? JSON.parse(cartFromLocalStorage)
+      : [];
   });
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   function addToCart(product: Product): void {
     const productExistsInCart = cart.find(
-      (itemIncart) => itemIncart.id === product.id
+      (itemIncart) => itemIncart.id === product.id,
     );
 
     let newCart;
@@ -33,7 +35,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       newCart = cart.map((itemInCart) =>
         itemInCart.id === product.id
           ? { ...itemInCart, quantity: itemInCart.quantity + 1 }
-          : itemInCart
+          : itemInCart,
       );
     } else {
       newCart = [...cart, { ...product, quantity: 1 }];
@@ -56,12 +58,12 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   function updateProductQuantity(
     product: ProductCart,
-    newQuantity: number
+    newQuantity: number,
   ): void {
     if (newQuantity <= 0) return;
 
     const productExistsInCart = cart.find(
-      (itemIncart) => itemIncart.id === product.id
+      (itemIncart) => itemIncart.id === product.id,
     );
 
     if (!productExistsInCart) return;
@@ -69,7 +71,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     const newCart = cart.map((itemInCart) =>
       itemInCart.id === product.id
         ? { ...itemInCart, quantity: newQuantity }
-        : itemInCart
+        : itemInCart,
     );
 
     setCart(newCart);
@@ -82,7 +84,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         addToCart,
         removeFromCart,
         incrementInCart,
-        decrementInCart
+        decrementInCart,
       }}
     >
       {children}

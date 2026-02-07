@@ -4,7 +4,6 @@ import { formatCurrency } from "../../utils/format-currency";
 import { IoMdClose } from "react-icons/io";
 import IconCart from "@/assets/img/icon-cart.png";
 
-
 interface CartDrawerProps {
   isOpen: boolean;
   onClose: () => void;

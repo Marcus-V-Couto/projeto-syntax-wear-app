@@ -28,9 +28,7 @@ const navLinks: NavLink[] = [
 ];
 
 export const Header = () => {
-
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
-
 
   return (
     <div className="relative">
@@ -78,13 +76,13 @@ export const Header = () => {
                 </Link>
               </li>
               <li className="flex items-center">
-                <CartButton onClick={() => setCartIsOpen(true)}/>
+                <CartButton onClick={() => setCartIsOpen(true)} />
               </li>
             </ul>
           </nav>
         </div>
       </header>
-      <CartDrawer isOpen={cartIsOpen} onClose={() => setCartIsOpen(false)}/>
+      <CartDrawer isOpen={cartIsOpen} onClose={() => setCartIsOpen(false)} />
     </div>
   );
 };

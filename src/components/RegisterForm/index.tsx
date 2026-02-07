@@ -7,7 +7,9 @@ import {
 
 type RegisterFormValues = z.infer<typeof registerUserFormSchema>;
 
-const initialValues: Omit<RegisterFormValues, 'birthDate'> & { birthDate: string } = {
+const initialValues: Omit<RegisterFormValues, "birthDate"> & {
+  birthDate: string;
+} = {
   firstName: "",
   lastName: "",
   email: "",
@@ -19,7 +21,9 @@ const initialValues: Omit<RegisterFormValues, 'birthDate'> & { birthDate: string
 };
 
 export const RegisterForm = () => {
-  const [values, setValues] = useState<Omit<RegisterFormValues, 'birthDate'> & { birthDate: string | Date }>(initialValues);
+  const [values, setValues] = useState<
+    Omit<RegisterFormValues, "birthDate"> & { birthDate: string | Date }
+  >(initialValues);
   const [errors, setErrors] = useState<
     Partial<Record<keyof RegisterFormValues, string>>
   >({});
@@ -31,12 +35,14 @@ export const RegisterForm = () => {
       lastName: registerUserFormBaseSchema.pick({ lastName: true }),
       email: registerUserFormBaseSchema.pick({ email: true }),
       password: registerUserFormBaseSchema.pick({ password: true }),
-      confirmPassword: registerUserFormBaseSchema.pick({ confirmPassword: true }),
+      confirmPassword: registerUserFormBaseSchema.pick({
+        confirmPassword: true,
+      }),
       cpf: registerUserFormBaseSchema.pick({ cpf: true }),
       birthDate: registerUserFormBaseSchema.pick({ birthDate: true }),
       cellphone: registerUserFormBaseSchema.pick({ cellphone: true }),
     }),
-    []
+    [],
   );
 
   const formatDateToInput = (date: Date | string) => {
@@ -68,33 +74,41 @@ export const RegisterForm = () => {
     const { name } = event.target;
     const fieldName = name as keyof RegisterFormValues;
     let fieldValue = values[fieldName];
-    
+
     // Converte string de data para Date se necessário
-    if (fieldName === "birthDate" && typeof fieldValue === "string" && fieldValue) {
+    if (
+      fieldName === "birthDate" &&
+      typeof fieldValue === "string" &&
+      fieldValue
+    ) {
       fieldValue = new Date(fieldValue);
     }
-    
+
     const fieldSchema = fieldSchemas[fieldName];
     const result = fieldSchema.safeParse({ [fieldName]: fieldValue });
-    
+
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
-      setErrors(prev => ({ ...prev, [fieldName]: fieldErrors[fieldName as keyof typeof fieldErrors]?.[0] }));
+      setErrors((prev) => ({
+        ...prev,
+        [fieldName]: fieldErrors[fieldName as keyof typeof fieldErrors]?.[0],
+      }));
     }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
-    
+
     // Converte birthDate para Date se for string
     const submitValues = {
       ...values,
-      birthDate: typeof values.birthDate === "string" && values.birthDate 
-        ? new Date(values.birthDate) 
-        : values.birthDate
+      birthDate:
+        typeof values.birthDate === "string" && values.birthDate
+          ? new Date(values.birthDate)
+          : values.birthDate,
     };
-    
+
     const result = registerUserFormSchema.safeParse(submitValues);
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
@@ -195,7 +209,11 @@ export const RegisterForm = () => {
           type="date"
           name="birthDate"
           placeholder="Data de nascimento"
-          value={typeof values.birthDate === "string" ? values.birthDate : formatDateToInput(values.birthDate)}
+          value={
+            typeof values.birthDate === "string"
+              ? values.birthDate
+              : formatDateToInput(values.birthDate)
+          }
           onChange={handleChange}
           onBlur={handleBlur}
         />

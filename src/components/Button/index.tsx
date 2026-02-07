@@ -9,7 +9,7 @@ export const Button = ({
   children,
   variant = "primary",
   size = "md",
-  onClick
+  onClick,
 }: ButtonProps) => {
   const buttonStyles = {
     base: "flex justify-center items-center gap-2 text-nowrap leading-none hover:cursor-pointer transition-colors duration-200 font-medium rounded-full focus:outline-none py-2.5 transition",

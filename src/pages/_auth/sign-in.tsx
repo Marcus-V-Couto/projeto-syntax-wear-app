@@ -7,7 +7,7 @@ import { Separator } from "../../components/Separator";
 export const Route = createFileRoute("/_auth/sign-in")({
   component: RouteComponent,
   head: () => ({
-    meta: [{ title: "Login - SyntaxWear"}],
+    meta: [{ title: "Login - SyntaxWear" }],
   }),
 });
 
@@ -17,7 +17,9 @@ function RouteComponent() {
       <div className="w-[450px] bg-white rounded-[18px] p-10 shadow-md">
         <div className="flex flex-col">
           <Logo />
-          <h2 className="text-black text-center font-bold text-[21px] mb-2">Entrar</h2>
+          <h2 className="text-black text-center font-bold text-[21px] mb-2">
+            Entrar
+          </h2>
           <p className="mb-3.5 text-center">
             Escolha como você gostaria de acessar sua conta
           </p>
@@ -38,8 +40,13 @@ function RouteComponent() {
           <LoginForm />
 
           <p className="text-gray-600 mt-3.5 text-center">
-            Não possui uma conta? {" "}
-            <Link to="/sign-up" className="flex items-center justify-center text-accent hover:underline">Cadastre-se</Link>
+            Não possui uma conta?{" "}
+            <Link
+              to="/sign-up"
+              className="flex items-center justify-center text-accent hover:underline"
+            >
+              Cadastre-se
+            </Link>
           </p>
         </div>
       </div>

@@ -79,7 +79,7 @@ const socialMedias = [
     target: "_blank",
     rel: "noopener noreferrer",
     alt: "Pinterest",
-  }
+  },
 ];
 
 export const SocialMediaLinks = () => {

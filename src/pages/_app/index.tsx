@@ -4,7 +4,7 @@ import { Categories } from "../../components/Categories";
 import { Gallery } from "../../components/Gallery";
 
 export const Route = createFileRoute("/_app/")({
-  component: RouteComponent
+  component: RouteComponent,
 });
 
 function RouteComponent() {

@@ -17,7 +17,10 @@ export const Categories = () => {
             <Button
               variant="secondary"
               onClick={() =>
-                router.navigate({ to: "/products/category/$category", params: { category: category.name.toLowerCase() } })
+                router.navigate({
+                  to: "/products/category/$category",
+                  params: { category: category.name.toLowerCase() },
+                })
               }
             >
               {category.name}

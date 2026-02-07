@@ -44,7 +44,7 @@ export const CEPForm = () => {
       setAddress({ ...data, shippingCost: shippingCost });
     } catch {
       setAddressError(
-        "Ocorreu um erro ao buscar o CEP. Tente novamente mais tarde."
+        "Ocorreu um erro ao buscar o CEP. Tente novamente mais tarde.",
       );
     }
   };
@@ -70,7 +70,7 @@ export const CEPForm = () => {
           className="bg-black text-white py-3 px-6 rounded-md cursor-pointer hover:bg-gray-800 disabled:opacity-50"
           disabled={isSubmitting}
         >
-          { isSubmitting ? "Calculando..." : "Calcular" }
+          {isSubmitting ? "Calculando..." : "Calcular"}
         </button>
       </form>
 
