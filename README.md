@@ -2,6 +2,8 @@
 
 Este projeto é uma loja de e-commerce moderna chamada **SyntaxWear**, desenvolvida para oferecer uma experiência de compra online eficiente e agradável. Construída com tecnologias web de ponta, a aplicação se destaca por sua arquitetura robusta, roteamento baseado em sistema de arquivos e gerenciamento de estado global para o carrinho de compras.
 
+Link do Projeto: https://projeto-syntax-wear-app.vercel.app/
+
 ## Tecnologias Utilizadas
 
 - **React**: Biblioteca JavaScript para construção de interfaces de usuário.
